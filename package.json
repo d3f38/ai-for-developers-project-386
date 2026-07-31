@@ -1,0 +1,17 @@
+{
+  "name": "ai-for-developers-project-386",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Calendar Booking Service — TypeSpec API Contract",
+  "scripts": {
+    "compile": "tsp compile src",
+    "lint": "tsp lint src"
+  },
+  "dependencies": {
+    "@typespec/compiler": "^0.60.0",
+    "@typespec/http": "^0.60.0",
+    "@typespec/openapi": "^0.60.0",
+    "@typespec/openapi3": "^0.60.0",
+    "@typespec/rest": "^0.60.0"
+  }
+}
