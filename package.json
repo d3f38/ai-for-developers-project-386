@@ -5,7 +5,11 @@
   "description": "Calendar Booking Service — TypeSpec API Contract",
   "scripts": {
     "compile": "tsp compile src",
-    "lint": "tsp lint src"
+    "lint": "tsp lint src",
+    "api-mock": "prism mock api-specs/openapi.yaml --port 4010",
+    "dev": "concurrently -n api,web -c blue,green \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
+    "dev:mock": "concurrently -n api,web -c blue,green \"npm run api-mock\" \"cd frontend && npm run dev\"",
+    "build": "cd frontend && npm run build"
   },
   "dependencies": {
     "@typespec/compiler": "^0.60.0",
@@ -13,5 +17,9 @@
     "@typespec/openapi": "^0.60.0",
     "@typespec/openapi3": "^0.60.0",
     "@typespec/rest": "^0.60.0"
+  },
+  "devDependencies": {
+    "@stoplight/prism-cli": "^5.14.2",
+    "concurrently": "^10.0.4"
   }
 }
