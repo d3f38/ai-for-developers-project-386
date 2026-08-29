@@ -84,6 +84,31 @@ export function getBookingsByEmail(email: string): Booking[] {
     );
 }
 
+/**
+ * Хранилище живёт в памяти процесса, поэтому после каждого рестарта
+ * (на бесплатном тарифе Render инстанс засыпает) оно пустое, и гость видит
+ * приложение без единого типа событий. Наполняем демо-данными на старте.
+ */
+export function seedDemoData(): void {
+  if (eventTypes.size > 0) return;
+
+  createEventType({
+    name: "Intro call",
+    description: "Короткое знакомство и обсуждение задачи",
+    durationMinutes: 15,
+  });
+  createEventType({
+    name: "Consultation",
+    description: "Разбор задачи с рекомендациями",
+    durationMinutes: 30,
+  });
+  createEventType({
+    name: "Deep dive",
+    description: "Детальная проработка решения",
+    durationMinutes: 60,
+  });
+}
+
 export function isSlotOccupied(startTime: string, durationMinutes: number): boolean {
   const start = new Date(startTime);
   const end = new Date(start.getTime() + durationMinutes * 60_000);
